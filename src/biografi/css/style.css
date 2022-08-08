@@ -82,6 +82,24 @@
 }
 
 /* modal */
+.contact-form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.contact-form .form-item{
+  margin:20px 0px;
+}
+
+button.btn.btn-outline-danger{
+  border: none !important;
+  font-weight: bolder;
+}
+
+button.btn.btn-outline-danger:hover{
+  border-radius: 50%;
+}
 
 /* Card  */
 .card{
@@ -117,7 +135,7 @@
   border-bottom: 5px dashed #198754;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .info .info-item{

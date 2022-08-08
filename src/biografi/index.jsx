@@ -8,9 +8,21 @@ import msoffice from './img/msoffice.png';
 import networking from './img/networking.png';
 import teknisikomputer from './img/teknisikomputer.png';
 import webprogramming from './img/webprogramming.png';
-import {Container, Navbar, Nav, Form, Button,Row, Col, Card } from "react-bootstrap";
+import {Container, Navbar, Nav, Form, Button,Row, Col, Card, Modal} from "react-bootstrap";
 
 export default class Biografi extends React.Component{
+
+  constructor(){
+    super()
+    this.state={
+      show:false
+    }
+  }
+
+  handleModal(){
+    this.setState({show:!this.state.show})
+  }
+
   render() {
     return (
       <>
@@ -56,9 +68,61 @@ export default class Biografi extends React.Component{
           </Row>
           <Row className="tombol">
             <Col >
-              <button type="button" className="btn-modal" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                  Contact Me
-              </button>
+              <Button variant="primary" className="btn-modal" onClick={() => {this.handleModal()}}>
+                Contact Me
+              </Button>
+            </Col>
+            <Col>
+              <Modal
+                show={this.state.show}
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+              >
+                <Modal.Header>
+                  <Modal.Title id="contained-modal-title-vcenter">
+                    Contact Me
+                  </Modal.Title>
+                  <Button variant="outline-danger" onClick={() => {this.handleModal()}}> x </Button>
+                </Modal.Header>
+                <Modal.Body>
+                  <Row className="contact-form">
+                    <Col className="form-item">
+                      <Form.Group>
+                        <Form.Label for="nama">Nama :</Form.Label>
+                        <Form.Control  type="text" placeholder="Nama" id="nama"/>
+                      </Form.Group>
+                    </Col>
+                    <Col className="form-item">
+                      <Form.Group>
+                        <Form.Label for="email">Email :</Form.Label>
+                        <Form.Control type="email" placeholder="Email" id="email"/>
+                      </Form.Group>
+                    </Col>
+                    <Col className="form-item">
+                      <Form.Group>
+                        <Form.Label for="handphone">No Handphone :</Form.Label>
+                        <Form.Control type="text" placeholder="No. Handphone" id="handphone"/>
+                      </Form.Group>
+                    </Col>
+                    <Col className="form-item">
+                      <Form.Group>
+                        <Form.Label for="subject">Subject :</Form.Label>
+                        <Form.Control type="text" placeholder="subject" id="subject"/>
+                      </Form.Group>
+                    </Col>
+                    <Col className="form-item">
+                      <Form.Group>
+                        <Form.Label for="message">Pesan :</Form.Label>
+                        <Form.Control as="textarea" name="Message" id="message" row={10}/>
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button variant="success">Send</Button>
+                </Modal.Footer>
+              </Modal>
             </Col>
           </Row>
         </Container>
@@ -225,7 +289,7 @@ export default class Biografi extends React.Component{
         <Container fluid className="pnfs">
           <Card className="nonformal">
             <Card.Header>
-              <h5 class="card-header"> <i class="bi bi-vector-pen"></i> Pendidikan Non Formal </h5>
+              <h5 className="card-header"> <i className="bi bi-vector-pen"></i> Pendidikan Non Formal </h5>
             </Card.Header>
             <Card.Body className="timeline-nonformal">
               <Row className="timeline-item">
